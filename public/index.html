@@ -5,11 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script
+  id="search-js"
+  defer
+  src="https://api.mapbox.com/search-js/v1.0.0-beta.13/web.js"
+  >
+  </script>
   <script defer src="script.js"></script>
   <title>Weather App</title>
 </head>
 <body>
-
   <div class="container">
     <div class="header">
       <div class="icon-container">
@@ -36,7 +41,19 @@
         </div>
       </div>
       <div class="city-search-container">
-        <input type="text" class="city-search" placeholder="Enter Location">
+        <!-- <input type="text" class="city-search" placeholder="Enter Location" autocomplete="address-line1"> -->
+        <form>
+          <!-- <input type="text" id="address-input" class="city-search" placeholder="Enter Location" autocomplete="address-line1"
+          />
+          <input type="text" id="address-input" class="city-search" placeholder="Enter Location" autocomplete="billing postal-code"
+          /> -->
+          <input name="address" autocomplete="shipping address-line1" placeholder="address">
+          <input name="apartment" autocomplete="shipping address-line2" placeholder="appartment">
+          <input name="city" autocomplete="shipping address-level2" placeholder="city">
+          <input name="state" autocomplete="shipping address-level1" placeholder="state">
+          <input name="country" autocomplete="shipping country" placeholder="country">
+          <input name="postal-code" autocomplete="shipping postal-code" placeholder="postal-code">
+        </form>
       </div>
     </div>
   </div>
