@@ -42,17 +42,18 @@
       </div>
       <div class="city-search-container">
         <!-- <input type="text" class="city-search" placeholder="Enter Location" autocomplete="address-line1"> -->
-        <form>
+        <form id="form-city-search">
           <!-- <input type="text" id="address-input" class="city-search" placeholder="Enter Location" autocomplete="address-line1"
           />
           <input type="text" id="address-input" class="city-search" placeholder="Enter Location" autocomplete="billing postal-code"
           /> -->
           <input name="address" autocomplete="shipping address-line1" placeholder="address">
           <input name="apartment" autocomplete="shipping address-line2" placeholder="appartment">
+          <input name="postal-code" autocomplete="shipping postal-code" placeholder="postal-code">
           <input name="city" autocomplete="shipping address-level2" placeholder="city">
           <input name="state" autocomplete="shipping address-level1" placeholder="state">
           <input name="country" autocomplete="shipping country" placeholder="country">
-          <input name="postal-code" autocomplete="shipping postal-code" placeholder="postal-code">
+          <button type="submit" id="submit">Go</button>
         </form>
       </div>
     </div>
