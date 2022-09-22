@@ -27,8 +27,9 @@ const getCoordinates =(fullAddress) => {
   })
     .then(res => res.json())
     .then(data => {
-      let lattitude = data.features[0].geometry.coordinates[0]
-      let longitude = data.features[0].geometry.coordinates[1]
+      let longitude = data.features[0].geometry.coordinates[0]
+      let lattitude = data.features[0].geometry.coordinates[1]
+      console.log(data.features[0].geometry.coordinates)
       getWeather(lattitude,longitude)
     }
     )
@@ -38,12 +39,13 @@ const getCoordinates =(fullAddress) => {
 }
 
 const getWeather = (lat, long) => {
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=4104b541de092d4999a4fd6dbc1a6887`
+  let apikey= '4104b541de092d4999a4fd6dbc1a6887'
+  let unit = 'metric'
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=4104b541de092d4999a4fd6dbc1a6887&units=${unit}`
   fetch (url)
     .then(res => res.json())
     .then(data => {
       console.log(data);
-
     }
     )
     .catch(error => {
