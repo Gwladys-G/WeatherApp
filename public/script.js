@@ -20,17 +20,16 @@ const logSubmit = (e) => {
 }
 
 
-const getCoordinates =(fullAddress) => {
+const getCoordinates = async (fullAddress) => {
   let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${fullAddress}.json?access_token=pk.eyJ1IjoiZ3dsYWR5c2VuZyIsImEiOiJjbDJ0YTV2MjEwMmUyM2Jud3gwano1c3drIn0.iaRnMIzWno7DG8KJODpGbg`
-  fetch (url,{
+  await fetch (url,{
     access_token: 'pk.eyJ1IjoiZ3dsYWR5c2VuZyIsImEiOiJjbDJ0YTV2MjEwMmUyM2Jud3gwano1c3drIn0.iaRnMIzWno7DG8KJODpGbg'
   })
     .then(res => res.json())
     .then(data => {
       let longitude = data.features[0].geometry.coordinates[0]
       let lattitude = data.features[0].geometry.coordinates[1]
-      console.log(data.features[0].geometry.coordinates)
-      getWeather(lattitude,longitude)
+      talkToServer(lattitude,longitude)
     }
     )
     .catch(error => {
@@ -38,22 +37,37 @@ const getCoordinates =(fullAddress) => {
     });
 }
 
-const getWeather = (lat, long) => {
-  let apikey= '4104b541de092d4999a4fd6dbc1a6887'
-  let unit = 'metric'
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=4104b541de092d4999a4fd6dbc1a6887&units=${unit}`
-  fetch (url)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    }
-    )
-    .catch(error => {
-     console.log(error);
-  });
-}
+// const getWeather = (lat, long) => {
+//   let apikey= '4104b541de092d4999a4fd6dbc1a6887'
+//   let unit = 'metric'
+//   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=4104b541de092d4999a4fd6dbc1a6887&units=${unit}`
+//   fetch (url)
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log(data);
+//     }
+//     )
+//     .catch(error => {
+//      console.log(error);
+//   });
+// }
 
-
+const talkToServer = async (lat,long) =>{
+  console.log("talktoserver");
+  await fetch('/weather', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      latitude: lat,
+      longitude: long
+    })
+    }).then(res => res.json()).then(data => {
+      console.log(data.name);
+    })
+  }
 
 
 
