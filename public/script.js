@@ -1,5 +1,13 @@
 const addressInput = document.getElementById('address-input')
 const form =document.getElementById('form-city-search')
+
+const locationElement = document.querySelector('[data-location]')
+const statusElement = document.querySelector('[data-status]')
+const temperatureElement = document.querySelector('[data-temperature]')
+const precipitationElement = document.querySelector('[data-precipitation]')
+const windElement = document.querySelector('[data-wind]')
+
+
 form.addEventListener('submit', (e) => logSubmit(e));
 
 const search = () => {
@@ -29,7 +37,7 @@ const getCoordinates = async (fullAddress) => {
     .then(data => {
       let longitude = data.features[0].geometry.coordinates[0]
       let lattitude = data.features[0].geometry.coordinates[1]
-      talkToServer(lattitude,longitude)
+      talkToServer(lattitude,longitude,fullAddress)
     }
     )
     .catch(error => {
@@ -37,22 +45,7 @@ const getCoordinates = async (fullAddress) => {
     });
 }
 
-// const getWeather = (lat, long) => {
-//   let apikey= '4104b541de092d4999a4fd6dbc1a6887'
-//   let unit = 'metric'
-//   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=4104b541de092d4999a4fd6dbc1a6887&units=${unit}`
-//   fetch (url)
-//     .then(res => res.json())
-//     .then(data => {
-//       console.log(data);
-//     }
-//     )
-//     .catch(error => {
-//      console.log(error);
-//   });
-// }
-
-const talkToServer = async (lat,long) =>{
+const talkToServer = async (lat,long,fullAddress) =>{
   console.log("talktoserver");
   await fetch('/weather', {
     method: 'POST',
@@ -65,10 +58,33 @@ const talkToServer = async (lat,long) =>{
       longitude: long
     })
     }).then(res => res.json()).then(data => {
-      console.log(data.name);
+      console.log(data);
+      setWeatherData(data, fullAddress)
     })
   }
 
+const setWeatherData = (data, fullAddress ) => {
+  let rain
+  let wind
+  if (data.rain) {
+    rain = `${data.rain['1h']}mm the last hour`
+  }else {
+    rain = `NA`
+  }
+  if (data.wind) {
+    wind = `${data.wind.speed} meter/sec`
+  } else {
+    wind = `NA`
+  }
 
+  locationElement.textContent = fullAddress
+  statusElement.textContent = `${data.weather[0].main} / ${data.weather[0].description}`
+  temperatureElement.textContent = `${data.main.temp} C`
+  windElement.textContent = wind
+  precipitationElement.textContent = rain
+  document.getElementById("icon").src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+  document.getElementById("icon").alt = data.weather[0].description
+
+}
 
 search();

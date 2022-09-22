@@ -13,6 +13,10 @@ app.use(express.json())
 app.use(express.static('public'))
 
 app.post('/weather', (req,res) => {
+
+
+
+
   let lat =req.body.latitude
   let long =req.body.longitude
   console.log(lat);
