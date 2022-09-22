@@ -97,12 +97,12 @@ body {
   margin: 20px;
 }
 
-form .city-search {
+form .address-search {
   display: flex;
   justify-content: center;
 }
 
-.city-search-box {
+.address-search-box{
   font-size: 1rem;
   outline: none;
   border: 1px solid #777;
@@ -135,4 +135,8 @@ form .city-search {
   position: absolute;
   bottom: 20px;
   right: 20px
+}
+
+.hide{
+  display: none;
 }

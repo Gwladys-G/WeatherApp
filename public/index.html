@@ -41,15 +41,15 @@
         </div>
       </div>
       <div class="city-search-container">
-        <form id="form-city-search">
-          <div class="city-search">
-            <input class="city-search-box" name="address" autocomplete="shipping address-line1" placeholder="address">
+        <form id="form-address-search">
+          <div class="address-search">
+            <input required id="address-search-box" class="address-search-box" name="address" autocomplete="shipping address-line1" placeholder="address" type="text">
           </div>
           <div class="city-extra">
-            <input name="postal-code" autocomplete="shipping postal-code" placeholder="postal-code">
-            <input name="city" autocomplete="shipping address-level2" placeholder="city">
-            <input name="state" autocomplete="shipping address-level1" placeholder="state">
-            <input name="country" autocomplete="shipping country" placeholder="country">
+            <input id="postalcode-search-box" name="postal-code" autocomplete="shipping postal-code" placeholder="postal-code" >
+            <input id="city-search-box" name="city" autocomplete="shipping address-level2" placeholder="city">
+            <input id="state-search-box" name="state" autocomplete="shipping address-level1" placeholder="state">
+            <input id="country-search-box" name="country" autocomplete="shipping country" placeholder="country">
           </div>
           <div class="submit-button">
             <button type="submit" id="submit">Go</button>

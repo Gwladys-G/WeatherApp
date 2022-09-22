@@ -1,5 +1,11 @@
-const addressInput = document.getElementById('address-input')
-const form =document.getElementById('form-city-search')
+const form =document.getElementById('form-address-search')
+
+
+const adressInput = document.getElementById("address-search-box")
+const postalInput = document.getElementById("postalcode-search-box")
+const cityInpunt = document.getElementById("city-search-box" )
+const stateInput = document.getElementById("state-search-box" )
+const countryInput= document.getElementById("country-search-box")
 
 const locationElement = document.querySelector('[data-location]')
 const statusElement = document.querySelector('[data-status]')
@@ -9,12 +15,28 @@ const windElement = document.querySelector('[data-wind]')
 
 
 form.addEventListener('submit', (e) => logSubmit(e));
+adressInput.addEventListener('input', (e) => displayDetails(e.target.value));
 
 const search = () => {
   mapboxsearch.autofill({
     accessToken: 'pk.eyJ1IjoiZ3dsYWR5c2VuZyIsImEiOiJjbDJ0YTV2MjEwMmUyM2Jud3gwano1c3drIn0.iaRnMIzWno7DG8KJODpGbg'
   });
 };
+
+const displayDetails = (e) => {
+  let query = e
+  console.log( adressInput.value )
+  adressInput.value = e
+  console.log( adressInput.value )
+  console.log(postalInput.value != "")
+  console.log(document.getElementsByClassName("city-extra"))
+  if(postalInput.value != "") {
+    postalInput.classList.remove("hide")
+  }
+  console.log(postalInput.value)
+
+
+}
 
 const logSubmit = (e) => {
   e.preventDefault()
@@ -25,6 +47,11 @@ const logSubmit = (e) => {
 
   let fullAddress = `${addressLine1} ${postCode} ${city} ${state}`
   getCoordinates(fullAddress)
+  adressInput.value = ""
+  postalInput.value = ""
+  cityInpunt.value = ""
+  stateInput.value = ""
+  countryInput.value = ""
 }
 
 
