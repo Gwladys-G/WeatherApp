@@ -12,14 +12,28 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+
 }
 
 .container {
-  max-width: 90%;
-  width: 1000px;
+  max-width: 50%;
+  width: 800px;
   background-color: rgb(230, 297, 242);
   box-shadow: 0 5px 10px black;
   border-radius: 5px;
+  margin-right: 10px;
+}
+
+.mapboxgl-map {
+  /* max-height: 40%;
+  height: 200px; */
+}
+
+#map {
+  /* position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%; */
 }
 
 .content {

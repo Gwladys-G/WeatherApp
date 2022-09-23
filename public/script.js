@@ -14,6 +14,36 @@ const precipitationElement = document.querySelector('[data-precipitation]')
 const windElement = document.querySelector('[data-wind]')
 
 
+const geolocalisationButton = document.getElementsByClassName("mapboxgl-ctrl-geolocate")
+console.log(geolocalisationButton);
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ3dsYWR5c2VuZyIsImEiOiJjbDJ0YTV2MjEwMmUyM2Jud3gwano1c3drIn0.iaRnMIzWno7DG8KJODpGbg';
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+style: 'mapbox://styles/mapbox/streets-v11', // style URL
+center: [-24, 42], // starting center in [lng, lat]
+zoom: 1, // starting zoom
+projection: 'globe' // display map as a 3D globe
+});
+
+
+map.on('style.load', () => {
+  map.setFog({}); // Set the default atmosphere style
+  });
+
+map.addControl(
+  new mapboxgl.GeolocateControl({
+  positionOptions: {
+  enableHighAccuracy: true
+  },
+  // When active the map will receive updates to the device's location as it changes.
+  trackUserLocation: true,
+  // Draw an arrow next to the location dot to indicate which direction the device is heading.
+  showUserHeading: true
+  })
+);
+
 form.addEventListener('submit', (e) => logSubmit(e));
 adressInput.addEventListener('input', (e) => displayDetails(e.target.value));
 
