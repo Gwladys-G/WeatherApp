@@ -17,45 +17,47 @@
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <div class="icon-container">
-        <img id="icon" width="100" height="100" src="http://openweathermap.org/img/wn/01d@2x.png" ></img>
-      </div>
-    </div>
-    <div class="content">
-      <div class="general-information">
-        <div class="status" data-status ></div>
-        <div class="location" data-location ></div>
-      </div>
-      <div class="detail-section">
-        <div class="detail">
-          <div class="title">Wind</div>
-          <div class="value" data-wind >TBD</div>
-        </div>
-        <div class="detail bordered">
-          <div class="title">Temperature</div>
-          <div class="value" data-temperature >TBD</div>
-        </div>
-        <div class="detail">
-          <div class="title">Precipitation</div>
-          <div class="value" data-precipitation > TBD</div>
+    <div class="card">
+      <div class="header">
+        <div class="icon-container">
+          <img id="icon" width="100" height="100" src="http://openweathermap.org/img/wn/01d@2x.png" ></img>
         </div>
       </div>
-      <div class="city-search-container">
-        <form id="form-address-search">
-          <div class="address-search">
-            <input required id="address-search-box" class="address-search-box" name="address" autocomplete="shipping address-line1" placeholder="address" type="text">
+      <div class="content">
+        <div class="general-information">
+          <div class="status" data-status ></div>
+          <div class="location" data-location ></div>
+        </div>
+        <div class="detail-section">
+          <div class="detail">
+            <div class="title">Wind</div>
+            <div class="value" data-wind >TBD</div>
           </div>
-          <div class="city-extra">
-            <input id="postalcode-search-box" name="postal-code" autocomplete="shipping postal-code" placeholder="postal-code" >
-            <input id="city-search-box" name="city" autocomplete="shipping address-level2" placeholder="city">
-            <input id="state-search-box" name="state" autocomplete="shipping address-level1" placeholder="state">
-            <input id="country-search-box" name="country" autocomplete="shipping country" placeholder="country">
+          <div class="detail bordered">
+            <div class="title">Temperature</div>
+            <div class="value" data-temperature >TBD</div>
           </div>
-          <div class="submit-button">
-            <button type="submit" id="submit">Go</button>
+          <div class="detail">
+            <div class="title">Precipitation</div>
+            <div class="value" data-precipitation > TBD</div>
           </div>
-        </form>
+        </div>
+        <div class="city-search-container">
+          <form id="form-address-search">
+            <div class="address-search">
+              <input required id="address-search-box" class="address-search-box" name="address" autocomplete="shipping address-line1" placeholder="address" type="text">
+            </div>
+            <div class="city-extra">
+              <input id="postalcode-search-box" name="postal-code" autocomplete="shipping postal-code" placeholder="postal-code" >
+              <input id="city-search-box" name="city" autocomplete="shipping address-level2" placeholder="city">
+              <input id="state-search-box" name="state" autocomplete="shipping address-level1" placeholder="state">
+              <input id="country-search-box" name="country" autocomplete="shipping country" placeholder="country">
+            </div>
+            <div class="submit-button">
+              <button type="submit" id="submit">Go</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
     <div id="map"></div>
