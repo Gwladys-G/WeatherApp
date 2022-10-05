@@ -13,8 +13,15 @@ const temperatureElement = document.querySelector('[data-temperature]')
 const precipitationElement = document.querySelector('[data-precipitation]')
 const windElement = document.querySelector('[data-wind]')
 
+const locateMe = document.getElementById("locate-me")
+const defaultLocate = document.getElementsByClassName("mapboxgl-ctrl-geolocate")
+
 const geolocalisationButton = document.getElementsByClassName("mapboxgl-ctrl-geolocate")
-console.log(geolocalisationButton)
+
+locateMe.addEventListener('click', () => {
+  defaultLocate[0].click();
+})
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ3dsYWR5c2VuZyIsImEiOiJjbDJ0YTV2MjEwMmUyM2Jud3gwano1c3drIn0.iaRnMIzWno7DG8KJODpGbg';
 const map = new mapboxgl.Map({
@@ -36,7 +43,7 @@ let geolocate = new mapboxgl.GeolocateControl({
 map.addControl(geolocate);
 map.on("load", function () {
 });
-geolocate.on("geolocate", locateUser);
+geolocate.on("geolocate",locateUser);
 
 function locateUser(e) {
   let longitude = e.coords.longitude

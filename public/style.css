@@ -1,3 +1,5 @@
+@import url('../node_modules/font-awesome/css/font-awesome.min.css');
+
 *,*::before, *::after{
   box-sizing: border-box;
   font-family: sans-serif
@@ -36,17 +38,17 @@ body {
 }
 
 
-  margin-top: 40px;
+.mapboxgl-ctrl-geolocate, .mapboxgl-ctrl-attrib-button {
+  display: none;
+}
 
-
-#map {
-
-
+.mapboxgl-ctrl-attrib-inner a{
+  font-size: 10px;
 }
 
 .content {
   padding: 40px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .header {
@@ -77,14 +79,14 @@ body {
 }
 
 .status {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .location {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: normal;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .detail-section {
@@ -122,6 +124,7 @@ body {
 form .address-search {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .address-search-box{
@@ -148,9 +151,16 @@ form .address-search {
   border-radius: 5px;
   padding: 5px 7px;
 }
+
 .submit-button {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button button {
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 .OpenWeather-logo {
